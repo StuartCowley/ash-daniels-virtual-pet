@@ -29,7 +29,7 @@ describe('constructor', () => {
 
   test('increments the hunger by 5', () => {
     const pet = new Pet('Fido');
-    pet.growUp2();
+    pet.growUp();
     expect(pet.hunger).toEqual(5);
   });
 
@@ -41,7 +41,7 @@ test('has a fitness level of 10', () => {
 
 test('Decreases fitness by 3', () => {
   const pet = new Pet('Fido');
-  pet.growUp3();
+  pet.growUp();
   expect(pet.fitness).toEqual(7);
   });
 });
