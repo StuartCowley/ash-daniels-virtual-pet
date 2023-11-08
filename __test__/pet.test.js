@@ -62,4 +62,13 @@ test('increases fitness by to a maxium of 10', () => {
 
   expect (pet.fitness).toEqual(10);
 });
-}); 
+
+test ('Decrease the hunger level by 3', () => {
+  const pet = new Pet ('Fido')
+
+  pet.feed = 3;
+  pet.feeding ();
+
+  expect (pet.feed).toEqual(3)
+});
+});
