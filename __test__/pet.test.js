@@ -44,4 +44,22 @@ test('Decreases fitness by 3', () => {
   pet.growUp();
   expect(pet.fitness).toEqual(7);
   });
+
+test('walk', () => {
+  const pet = new Pet ('Fido');
+  
+  pet.fitness = 4
+  pet.walk(); 
+
+  expect (pet.fitness).toEqual(8);
 });
+
+test('increases fitness by to a maxium of 10', () => {
+  const pet = new Pet ('Fido');
+
+  pet.fitness = 8;
+  pet.walk();
+
+  expect (pet.fitness).toEqual(10);
+});
+}); 
