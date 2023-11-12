@@ -63,12 +63,45 @@ test('increases fitness by to a maxium of 10', () => {
   expect (pet.fitness).toEqual(10);
 });
 
-test ('Decrease the hunger level by 3', () => {
-  const pet = new Pet ('Fido')
+test('Decrease the hunger level by 3', () => {
+  const pet = new Pet('Fido');
 
-  pet.feed = 3;
-  pet.feeding ();
+  pet.growUp();
+  pet.feed();   
 
-  expect (pet.feed).toEqual(3)
+  expect(pet.hunger).toEqual(2);
 });
+});
+
+
+describe ("checkup", () => {
+  test("checks pets fitness levels", () => {
+    const pet = new Pet("Fido");
+
+    pet.fitness = 3;
+    expect(pet.checkup()).toEqual("I need a walk");
+  });
+
+  test("checks pets hunger", () => {
+    const pet = new Pet("Fido");
+
+    pet.hunger = 6;
+    expect(pet.checkup()).toEqual("I am hungry");
+  });
+
+  test("checks both fitness and hunger", () => {
+    const pet = new Pet("Fido");
+
+    pet.fitness = 3;
+    pet.hunger = 6;
+    expect(pet.checkup()).toEqual("I need a walk and I am hungry");
+  });
+
+  test("checkup, pet is doing fine", () => {
+    const pet = new Pet("Fido");
+
+    pet.fitness = 6;
+    pet.hunger = 3;
+    expect(pet.checkup()).toEqual("I feel great!");
+  });
 });
