@@ -1,6 +1,13 @@
 const Pet = require('../src/pet');
 
-describe('constructor', () => {
+describe('Pet', () => {
+  let pet;
+
+  beforeEach(() => {
+    pet = new Pet('Fido');
+  });
+
+  describe('constructor', () => {
     test('returns an object', () => {
       expect(pet).toBeInstanceOf(Object);
     });
@@ -100,3 +107,4 @@ describe('constructor', () => {
       expect(petParent.children).toEqual([petChild]);
     });
   });
+});
