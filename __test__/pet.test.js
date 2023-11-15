@@ -79,12 +79,32 @@ describe('Pet', () => {
   });
 
   describe('isAlive', () => {
-    test('Pet is no longer alive', () => {
-      pet.fitness = -1;
-      pet.hunger = 11;
-      pet.age = 30;
+    test('should return false if pet\'s fitness is 0 or less', () => {
+      pet.fitness = 0;
       expect(pet.isAlive).toEqual(false);
-      
+    });
+
+    test('should return false if pet\'s hunger is 10 or more', () => {
+      pet.hunger = 11;
+      expect(pet.isAlive).toEqual(false);
+    });
+
+    test('should return false if pet\'s age is 30 or more', () => {
+      pet.age = 31;
+      expect(pet.isAlive).toEqual(false);
+    });
+
+    test('should return true if none of the above conditions are met', () => {
+      expect(pet.isAlive).toEqual(true);
+    });
+  });
+
+  describe('having a child', () => {
+    test('add a child', () => {
+      const petParent = new Pet('Basher');
+      const petChild = new Pet('child');
+      petParent.adoptChild(petChild);
+      expect(petParent.children).toEqual([petChild]);
     });
   });
 });

@@ -9,6 +9,7 @@ function Pet(name) {
   this.age = 0;
   this.hunger = 0;
   this.fitness = MAXIMUM_FITNESS;
+  this.children = [];
 }
 
 Pet.prototype = {
@@ -16,7 +17,7 @@ Pet.prototype = {
     return this.age < MAXIMUM_AGE && this.hunger < MAXIMUM_HUNGER && this.fitness > MINIMUM_FITNESS;
   },
 
-  growUp: function () {
+  growUp() {
     if (!this.isAlive) {
       return "Your pet is no longer alive";
     }
@@ -25,21 +26,21 @@ Pet.prototype = {
     this.fitness = Math.max(MINIMUM_FITNESS, this.fitness - 3);
   },
 
-  walk: function () {
+  walk() {
     if (!this.isAlive) {
       return "Your pet is no longer alive";
     }
     this.fitness = Math.min(MAXIMUM_FITNESS, this.fitness + 4);
   },
 
-  feed: function () {
+  feed() {
     if (!this.isAlive) {
       return "Your pet is no longer alive";
     }
     this.hunger = Math.max(MINIMUM_HUNGER, this.hunger - 3);
   },
 
-  checkup: function () {
+  checkup() {
     if (!this.isAlive) {
       return "Your pet is no longer alive";
     }
@@ -52,6 +53,13 @@ Pet.prototype = {
     } else {
       return "I feel great!";
     }
+  },
+
+  adoptChild(petChild) {
+    if (!petChild) {
+      return;
+    }
+    this.children.push(petChild);
   },
 };
 
